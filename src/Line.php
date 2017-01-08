@@ -98,17 +98,17 @@ class Line
 
     protected function blockCommand()
     {
-        if (strlen($this->line) === 0) {
+        if (mb_strlen($this->line) === 0) {
             $this->interrupted = true;
             return;
         }
 
-        $this->command = substr($this->line, 0, 1);
+        $this->command = mb_substr($this->line, 0, 1);
     }
 
     protected function blockValue()
     {
-        $this->value = trim(substr($this->line, 1));
+        $this->value = trim(mb_substr($this->line, 1));
     }
 
     public function isComment()

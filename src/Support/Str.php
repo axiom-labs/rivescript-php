@@ -13,7 +13,7 @@ class Str
      */
     public static function removeWhitespace($line)
     {
-        return  preg_replace('/( )+/', ' ', trim($line));
+        return preg_replace('/[\pC\pZ]+/u', ' ', trim($line));
     }
 
     /**
@@ -25,7 +25,7 @@ class Str
      */
     public static function startsWith($haystack, $needle)
     {
-        return $needle === '' or strrpos($haystack, $needle, -strlen($haystack)) !== false;
+        return $needle === '' or mb_strrpos($haystack, $needle, -mb_strlen($haystack)) !== false;
     }
 
     /**
@@ -37,6 +37,6 @@ class Str
      */
     public static function endsWith($haystack, $needle)
     {
-        return $needle === '' or (($temp = strlen($haystack) - strlen($needle)) >= 0 and strpos($haystack, $needle, $temp) !== false);
+        return $needle === '' or (($temp = mb_strlen($haystack) - mb_strlen($needle)) >= 0 and mb_strpos($haystack, $needle, $temp) !== false);
     }
 }
