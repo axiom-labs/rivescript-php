@@ -42,7 +42,9 @@ class Parser
     /**
      * Process Rivescript file.
      *
-     * @param string  $file
+     * @param string $file
+     * @param array|null $tree
+     * @return array
      */
     public function process($file, $tree = null)
     {
@@ -58,12 +60,14 @@ class Parser
             if ($line->isInterrupted() or $line->isComment()) continue;
 
             foreach ($this->commands as $class) {
-                $class        = "\Vulcan\Rivescript\Commands\\$class";
+                $class        = "\\Vulcan\\Rivescript\\Commands\\$class";
+                /** @var \Vulcan\Rivescript\Contracts\Command $commandClass */
                 $commandClass = new $class;
 
                 $result = $commandClass->parse($this->tree, $line, $currentCommand);
 
                 if (isset($result['command'])) {
+                    /** @noinspection PhpUnusedLocalVariableInspection */
                     $currentCommand = $result['command'];
                     continue 2;
                 }

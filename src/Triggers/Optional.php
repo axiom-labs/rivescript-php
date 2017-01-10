@@ -19,6 +19,8 @@ class Optional implements Trigger
         @preg_match_all('/\[(.*?)\]/', $trigger, $optional);
 
         if (! empty($optional[0])) {
+            $search = $replace = [];
+
             foreach ($optional[0] as $optionKey => $option) {
                 $search[]  = $option;
                 $replace[] = '['.$optional[1][$optionKey].']?';

@@ -60,7 +60,7 @@ class ChatCommand extends Command
         $this->getBotResponse($input, $output, $message);
     }
 
-    protected function getBotResponse($input, $output, $message)
+    protected function getBotResponse($input, OutputInterface $output, $message)
     {
         $bot      = 'Bot > ';
         $reply    = $this->rivescript->reply(null, $message);
@@ -71,7 +71,7 @@ class ChatCommand extends Command
         $this->waitForUserInput($input, $output);
     }
 
-    protected function parseConsoleCommands($input, $output, $message)
+    protected function parseConsoleCommands($input, OutputInterface $output, $message)
     {
         if ($message === '/quit') {
             $output->writeln('Exiting...');
@@ -95,6 +95,8 @@ class ChatCommand extends Command
 
             $this->waitForUserInput($input, $output);
         }
+
+        return 0;
     }
 
     private function parseFiles($files)

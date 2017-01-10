@@ -47,6 +47,7 @@ class Line
      * Create a new Line instance.
      *
      * @param string  $line
+     * @param $number
      */
     public function __construct($line, $number)
     {

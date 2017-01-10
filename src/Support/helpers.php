@@ -23,7 +23,7 @@ if (! function_exists('ends_with')) {
      * Determine if a given string ends with a given substring.
      *
      * @param  string  $haystack
-     * @param  string  $needles
+     * @param  string  $needle
      * @return bool
      */
     function ends_with($haystack, $needle)
@@ -81,7 +81,7 @@ if (! function_exists('starts_with')) {
      * Determine if a given string starts with a given substring.
      *
      * @param  string  $haystack
-     * @param  string  $needles
+     * @param  string  $needle
      * @return bool
      */
     function starts_with($haystack, $needle)

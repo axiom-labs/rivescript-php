@@ -11,6 +11,8 @@ class Bot implements Tag
      */
     protected $tree;
 
+    protected $pattern;
+
     /**
      * Create a new Bot instance.
      *

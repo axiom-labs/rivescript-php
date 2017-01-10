@@ -8,6 +8,8 @@ class Call implements Tag
 {
     protected $tree;
 
+    protected $pattern;
+
     /**
      * Create a new Call instance.
      *
@@ -43,6 +45,7 @@ class Call implements Tag
 
             unset($macro[0]);
 
+            /** @noinspection PhpUnusedLocalVariableInspection */
             $args = array_values($macro);
 
             if (isset($this->tree['objects'][$object])) {
