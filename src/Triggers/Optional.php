@@ -16,7 +16,7 @@ class Optional implements Trigger
      */
     public function parse($key, $trigger, $message)
     {
-        @preg_match_all('/\[(.*?)\]/', $trigger, $optional);
+        @preg_match_all('/\[(.*?)\]/u', $trigger, $optional);
 
         if (! empty($optional[0])) {
             $search = $replace = [];
@@ -31,7 +31,7 @@ class Optional implements Trigger
             print_r($parsedTrigger);
             echo "\n";
 
-            if (@preg_match('#^'.$parsedTrigger.'$#', $message)) {
+            if (@preg_match('#^'.$parsedTrigger.'$#u', $message)) {
                 return [
                     'match' => true,
                     'key'   => $key,

@@ -16,7 +16,7 @@ class Alternation implements Trigger
      */
     public function parse($key, $trigger, $message)
     {
-        if (@preg_match('/'.$trigger.'/', $message, $stars)) {
+        if (@preg_match('/'.$trigger.'/u', $message, $stars)) {
 
             array_shift($stars);
 

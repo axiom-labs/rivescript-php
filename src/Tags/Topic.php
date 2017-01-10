@@ -11,7 +11,7 @@ class Topic implements Tag
      *
      * @var string
      */
-    public $pattern = '/{\s*topic\s*=\s*(\w+)\s*}/i';
+    public $pattern = '/{\s*topic\s*=\s*(\w+)\s*}/u';
 
     protected $tree;
 

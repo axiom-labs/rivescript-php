@@ -42,7 +42,7 @@ class Wildcard implements Trigger
         foreach ($this->replacements as $replacement) {
             $parsedTrigger = preg_replace($replacement['pattern'], '('.$replacement['replacement'].')', $trigger);
 
-            if (@preg_match('#^'.$parsedTrigger.'$#', $message, $stars)) {
+            if (@preg_match('#^'.$parsedTrigger.'$#u', $message, $stars)) {
                 array_shift($stars);
 
                 return [
