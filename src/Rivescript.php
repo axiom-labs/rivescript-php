@@ -89,7 +89,8 @@ class Rivescript
                 $replies = $triggers[$found['key']]['reply'];
 
                 if (isset($triggers[$found['key']]['redirect'])) {
-                    return $this->reply($user, $triggers[$found['key']]['redirect']);
+                    $message = $this->parseReply($triggers[$found['key']]['redirect'], $found['data']);
+                    return $this->reply($user, $message);
                 }
 
                 if (count($replies)) {
