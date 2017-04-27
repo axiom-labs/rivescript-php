@@ -9,9 +9,10 @@ class Arr implements Command
     /**
      * Parse the command.
      *
-     * @param  array  $tree
-     * @param  object  $line
-     * @param  string  $command
+     * @param array  $tree
+     * @param object $line
+     * @param string $command
+     *
      * @return array
      */
     public function parse($tree, $line, $command)
@@ -20,7 +21,7 @@ class Arr implements Command
             $type = strtok($line->value(), ' ');
 
             if ($type === 'array') {
-                $value              = str_replace('array', '', $line->value());
+                $value = str_replace('array', '', $line->value());
                 list($key, $values) = explode('=', $value);
 
                 $key = trim($key);
@@ -38,7 +39,7 @@ class Arr implements Command
                     $value = str_replace('/s', ' ', $value);
                     $value = trim($value);
 
-                    if (! empty($value)) {
+                    if (!empty($value)) {
                         $explodedValues[$index] = $value;
                     } else {
                         unset($explodedValues[$index]);
@@ -52,7 +53,7 @@ class Arr implements Command
 
         return [
             'command' => $command,
-            'tree'    => $tree
+            'tree'    => $tree,
         ];
     }
 }

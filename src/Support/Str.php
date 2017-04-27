@@ -8,7 +8,8 @@ class Str
      * Trim leading and trailing whitespace as well as
      * whitespace surrounding individual arguments.
      *
-     * @param string  $line
+     * @param string $line
+     *
      * @return string
      */
     public static function removeWhitespace($line)
@@ -19,8 +20,9 @@ class Str
     /**
      * Determine if string starts with the supplied needle.
      *
-     * @param string  $haystack
-     * @param string  $needle
+     * @param string $haystack
+     * @param string $needle
+     *
      * @return bool
      */
     public static function startsWith($haystack, $needle)
@@ -31,8 +33,9 @@ class Str
     /**
      * Determine if string ends with the supplied needle.
      *
-     * @param string  $haystack
-     * @param string  $needle
+     * @param string $haystack
+     * @param string $needle
+     *
      * @return bool
      */
     public static function endsWith($haystack, $needle)

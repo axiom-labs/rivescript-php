@@ -20,8 +20,8 @@ class Parser
             'topic'   => 'random',
             'trigger' => null,
             'object'  => null,
-            'input'   => array(),
-            'reply'   => array()
+            'input'   => [],
+            'reply'   => [],
         ],
     ];
 
@@ -37,32 +37,35 @@ class Parser
         'Variable',
         'VariableGlobal',
         'VariablePerson',
-        'VariableSubstitute'
+        'VariableSubstitute',
     ];
 
     /**
      * Process Rivescript file.
      *
-     * @param string $file
+     * @param string     $file
      * @param array|null $tree
+     *
      * @return array
      */
     public function process($file, $tree = null)
     {
         $this->setTree($tree);
 
-        $file       = new SplFileObject($file);
+        $file = new SplFileObject($file);
         $lineNumber = 1;
 
-        while (! $file->eof()) {
+        while (!$file->eof()) {
             $currentCommand = null;
-            $line           = new Line($file->fgets(), $lineNumber++);
+            $line = new Line($file->fgets(), $lineNumber++);
 
-            if ($line->isInterrupted() or $line->isComment()) continue;
+            if ($line->isInterrupted() or $line->isComment()) {
+                continue;
+            }
 
             foreach ($this->commands as $class) {
-                $class        = "\\Vulcan\\Rivescript\\Commands\\$class";
-                $commandClass = new $class;
+                $class = "\\Vulcan\\Rivescript\\Commands\\$class";
+                $commandClass = new $class();
 
                 $result = $commandClass->parse($this->tree, $line, $currentCommand);
 
@@ -87,12 +90,12 @@ class Parser
     protected function trimTree()
     {
         $this->tree['metadata']['trigger'] = null;
-        $this->tree['metadata']['object']  = null;
+        $this->tree['metadata']['object'] = null;
     }
 
     private function setTree($tree)
     {
-        if (! is_null($tree)) {
+        if (!is_null($tree)) {
             $this->tree = $tree;
         }
     }

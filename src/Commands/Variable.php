@@ -9,9 +9,10 @@ class Variable implements Command
     /**
      * Parse the command.
      *
-     * @param  array  $tree
-     * @param  object  $line
-     * @param  string  $command
+     * @param array  $tree
+     * @param object $line
+     * @param string $command
+     *
      * @return array
      */
     public function parse($tree, $line, $command)
@@ -20,11 +21,11 @@ class Variable implements Command
             $type = strtok($line->value(), ' ');
 
             if ($type === 'var') {
-                $value             = str_replace('var', '', $line->value());
+                $value = str_replace('var', '', $line->value());
                 list($key, $value) = explode('=', $value);
 
-                $key      = trim($key);
-                $value    = trim($value);
+                $key = trim($key);
+                $value = trim($value);
 
                 $tree['begin']['var'][$key] = $value;
             }
@@ -32,7 +33,7 @@ class Variable implements Command
 
         return [
             'command' => $command,
-            'tree'    => $tree
+            'tree'    => $tree,
         ];
     }
 }

@@ -30,7 +30,7 @@ class Line
     protected $blocks = [
         'Comment',
         'Command',
-        'Value'
+        'Value',
     ];
 
     /**
@@ -46,12 +46,12 @@ class Line
     /**
      * Create a new Line instance.
      *
-     * @param string  $line
+     * @param string $line
      * @param $number
      */
     public function __construct($line, $number)
     {
-        $this->line   = $line;
+        $this->line = $line;
         $this->number = $number;
 
         $this->process();
@@ -89,7 +89,9 @@ class Line
             log_warning('Using the # symbol for comments is deprecated');
             $this->interrupted = true;
         } elseif (starts_with($this->line, '/*')) {
-            if (ends_with($this->line, '*/')) return null;
+            if (ends_with($this->line, '*/')) {
+                return;
+            }
 
             $this->isComment = true;
         } elseif (ends_with($this->line, '*/')) {
@@ -101,6 +103,7 @@ class Line
     {
         if (mb_strlen($this->line) === 0) {
             $this->interrupted = true;
+
             return;
         }
 

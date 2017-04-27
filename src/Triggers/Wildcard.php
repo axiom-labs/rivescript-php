@@ -9,32 +9,33 @@ class Wildcard implements Trigger
     protected $replacements = [
         [
             'pattern'     => '/^\*$/',
-            'replacement' => '<zerowidthstar>'
+            'replacement' => '<zerowidthstar>',
         ],
         [
             'pattern'     => '/\*/',
-            'replacement' => '.+?'
+            'replacement' => '.+?',
         ],
         [
             'pattern'     => '/#/',
-            'replacement' => '\\d+?'
+            'replacement' => '\\d+?',
         ],
         [
             'pattern'     => '/_/',
-            'replacement' => '\\w+?'
+            'replacement' => '\\w+?',
         ],
         [
             'pattern'     => '/<zerowidthstar>/',
-            'replacement' => '.*?'
-        ]
+            'replacement' => '.*?',
+        ],
     ];
 
     /**
      * Parse the trigger.
      *
-     * @param  integer  $key
-     * @param  string  $trigger
-     * @param  string  $message
+     * @param int    $key
+     * @param string $trigger
+     * @param string $message
+     *
      * @return array
      */
     public function parse($key, $trigger, $message)

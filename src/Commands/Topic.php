@@ -9,9 +9,10 @@ class Topic implements Command
     /**
      * Parse the command.
      *
-     * @param  array  $tree
-     * @param  object  $line
-     * @param  string  $command
+     * @param array  $tree
+     * @param object $line
+     * @param string $command
+     *
      * @return array
      */
     public function parse($tree, $line, $command)
@@ -30,7 +31,7 @@ class Topic implements Command
 
         return [
             'command' => $command,
-            'tree'    => $tree
+            'tree'    => $tree,
         ];
     }
 }

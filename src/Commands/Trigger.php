@@ -9,9 +9,10 @@ class Trigger implements Command
     /**
      * Parse the command.
      *
-     * @param  array  $tree
-     * @param  object  $line
-     * @param  string  $command
+     * @param array  $tree
+     * @param object $line
+     * @param string $command
+     *
      * @return array
      */
     public function parse($tree, $line, $command)
@@ -27,25 +28,25 @@ class Trigger implements Command
                 'previous'  => null,
             ];
 
-            if (! isset($tree['topics']['random'])) {
+            if (!isset($tree['topics']['random'])) {
                 $tree['topics']['random'] = [
                     'includes' => [],
                     'inherits' => [],
-                    'triggers' => []
+                    'triggers' => [],
                 ];
             }
 
-            $tree['topics'][$currentTopic]['triggers'][]            = $trigger;
-            $key                                                    = max(array_keys($tree['topics'][$currentTopic]['triggers']));
+            $tree['topics'][$currentTopic]['triggers'][] = $trigger;
+            $key = max(array_keys($tree['topics'][$currentTopic]['triggers']));
             $tree['topics'][$currentTopic]['triggers'][$key]['key'] = $key;
-            $tree['metadata']['trigger']                            = $tree['topics'][$currentTopic]['triggers'][$key];
+            $tree['metadata']['trigger'] = $tree['topics'][$currentTopic]['triggers'][$key];
 
             return ['tree' => $tree];
         }
 
         return [
             'command' => $command,
-            'tree'    => $tree
+            'tree'    => $tree,
         ];
     }
 }

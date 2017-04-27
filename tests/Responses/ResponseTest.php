@@ -14,7 +14,7 @@ abstract class ResponseTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->rivescript = new Rivescript;
+        $this->rivescript = new Rivescript();
 
         $this->rivescript->load(realpath('./resources/brains/test.rive'));
     }

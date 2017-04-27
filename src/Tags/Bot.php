@@ -16,11 +16,11 @@ class Bot implements Tag
     /**
      * Create a new Bot instance.
      *
-     * @param  array  $tree
+     * @param array $tree
      */
     public function __construct($tree)
     {
-        $this->tree    = $tree;
+        $this->tree = $tree;
         $this->pattern = regex()
             ->find('<bot ')
             ->openGroup()
@@ -33,8 +33,9 @@ class Bot implements Tag
     /**
      * Parse the response.
      *
-     * @param  string  $response
-     * @param  array  $data
+     * @param string $response
+     * @param array  $data
+     *
      * @return array
      */
     public function parse($response, $data)
@@ -47,7 +48,7 @@ class Bot implements Tag
 
         return [
             'response' => $response,
-            'metadata' => isset($metadata) ? $metadata : []
+            'metadata' => isset($metadata) ? $metadata : [],
         ];
     }
 }

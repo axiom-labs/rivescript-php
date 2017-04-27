@@ -9,9 +9,10 @@ class VariableGlobal implements Command
     /**
      * Parse the command.
      *
-     * @param  array  $tree
-     * @param  object  $line
-     * @param  string  $command
+     * @param array  $tree
+     * @param object $line
+     * @param string $command
+     *
      * @return array
      */
     public function parse($tree, $line, $command)
@@ -20,11 +21,11 @@ class VariableGlobal implements Command
             $type = strtok($line->value(), ' ');
 
             if ($type === 'global') {
-                $value             = str_replace('global', '', $line->value());
+                $value = str_replace('global', '', $line->value());
                 list($key, $value) = explode('=', $value);
 
-                $key      = trim($key);
-                $value    = trim($value);
+                $key = trim($key);
+                $value = trim($value);
 
                 $tree['begin']['global'][$key] = $value;
             }
@@ -32,7 +33,7 @@ class VariableGlobal implements Command
 
         return [
             'command' => $command,
-            'tree'    => $tree
+            'tree'    => $tree,
         ];
     }
 }

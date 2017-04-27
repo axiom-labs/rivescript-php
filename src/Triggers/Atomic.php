@@ -9,9 +9,10 @@ class Atomic implements Trigger
     /**
      * Parse the trigger.
      *
-     * @param  integer  $key
-     * @param  string  $trigger
-     * @param  string  $message
+     * @param int    $key
+     * @param string $trigger
+     * @param string $message
+     *
      * @return array
      */
     public function parse($key, $trigger, $message)

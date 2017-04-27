@@ -19,9 +19,7 @@ class ObjectMacro implements Command
                     ];
                 }
             }
-        }
-
-        else if ($line->command() === '<') {
+        } elseif ($line->command() === '<') {
             list($type) = explode(' ', $line->value());
 
             if ($type === 'object') {
@@ -32,16 +30,14 @@ class ObjectMacro implements Command
 
                 $tree['metadata']['object'] = null;
             }
-        }
-
-        else if (! is_null($tree['metadata']['object'])) {
-            $code                                 = $line->command().$line->value();
+        } elseif (!is_null($tree['metadata']['object'])) {
+            $code = $line->command().$line->value();
             $tree['metadata']['object']['code'][] = $code;
         }
 
         return [
             'command' => $command,
-            'tree'    => $tree
+            'tree'    => $tree,
         ];
     }
 }

@@ -13,11 +13,11 @@ class Call implements Tag
     /**
      * Create a new Call instance.
      *
-     * @param  array  $tree
+     * @param array $tree
      */
     public function __construct($tree)
     {
-        $this->tree    = $tree;
+        $this->tree = $tree;
         $this->pattern = regex()
             ->find('<call>')
             ->openGroup()
@@ -31,8 +31,9 @@ class Call implements Tag
     /**
      * Parse the response.
      *
-     * @param  string  $response
-     * @param  array  $data
+     * @param string $response
+     * @param array  $data
+     *
      * @return array
      */
     public function parse($response, $data)
@@ -40,7 +41,7 @@ class Call implements Tag
         if ($this->pattern->test($response)) {
             $matches = $this->pattern->match($response);
 
-            $macro  = explode(' ', $matches[1]);
+            $macro = explode(' ', $matches[1]);
             $object = $macro[0];
 
             unset($macro[0]);
@@ -50,9 +51,9 @@ class Call implements Tag
 
             if (isset($this->tree['objects'][$object])) {
                 ob_start();
-                    eval($this->tree['objects'][$object]);
+                eval($this->tree['objects'][$object]);
 
-                    $replace = ob_get_contents();
+                $replace = ob_get_contents();
                 ob_end_clean();
             }
 
@@ -65,7 +66,7 @@ class Call implements Tag
 
         return [
             'response' => $response,
-            'metadata' => isset($metadata) ? $metadata : []
+            'metadata' => isset($metadata) ? $metadata : [],
         ];
     }
 }

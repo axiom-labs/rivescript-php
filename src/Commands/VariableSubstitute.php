@@ -9,9 +9,10 @@ class VariableSubstitute implements Command
     /**
      * Parse the command.
      *
-     * @param  array  $tree
-     * @param  object  $line
-     * @param  string  $command
+     * @param array  $tree
+     * @param object $line
+     * @param string $command
+     *
      * @return array
      */
     public function parse($tree, $line, $command)
@@ -20,10 +21,10 @@ class VariableSubstitute implements Command
             $type = strtok($line->value(), ' ');
 
             if ($type === 'sub') {
-                $value             = str_replace('sub', '', $line->value());
+                $value = str_replace('sub', '', $line->value());
                 list($sub, $value) = explode('=', $value);
 
-                $sub   = trim($sub);
+                $sub = trim($sub);
                 $value = trim($value);
 
                 $tree['begin']['sub'][$sub] = $value;
@@ -32,7 +33,7 @@ class VariableSubstitute implements Command
 
         return [
             'command' => $command,
-            'tree'    => $tree
+            'tree'    => $tree,
         ];
     }
 }

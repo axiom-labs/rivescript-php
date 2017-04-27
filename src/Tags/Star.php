@@ -23,8 +23,9 @@ class Star implements Tag
     /**
      * Parse the response.
      *
-     * @param  string  $response
-     * @param  array  $data
+     * @param string $response
+     * @param array  $data
+     *
      * @return array
      */
     public function parse($response, $data)
@@ -55,7 +56,7 @@ class Star implements Tag
 
         return [
             'response' => $response,
-            'metadata' => isset($metadata) ? $metadata : []
+            'metadata' => isset($metadata) ? $metadata : [],
         ];
     }
 }

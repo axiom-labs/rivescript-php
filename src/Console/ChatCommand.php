@@ -50,7 +50,7 @@ class ChatCommand extends Command
 
     protected function waitForUserInput($input, $output)
     {
-        $helper   = $this->getHelper('question');
+        $helper = $this->getHelper('question');
         $question = new Question('<info>You > </info>');
 
         $message = $helper->ask($input, $output, $question);
@@ -62,8 +62,8 @@ class ChatCommand extends Command
 
     protected function getBotResponse($input, OutputInterface $output, $message)
     {
-        $bot      = 'Bot > ';
-        $reply    = $this->rivescript->reply(null, $message);
+        $bot = 'Bot > ';
+        $reply = $this->rivescript->reply(null, $message);
         $response = "<info>{$reply}</info>";
 
         $output->writeln($bot.$response);
@@ -103,8 +103,8 @@ class ChatCommand extends Command
     {
         if (is_dir($files)) {
             $directory = realpath($files);
-            $files     = [];
-            $brains    = glob($directory.'/*.rive');
+            $files = [];
+            $brains = glob($directory.'/*.rive');
 
             foreach ($brains as $brain) {
                 $files[] = $brain;

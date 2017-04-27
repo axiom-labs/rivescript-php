@@ -25,7 +25,7 @@ class Rivescript
     protected $triggers = [
         'Arr',
         'Atomic',
-        'Wildcard'
+        'Wildcard',
     ];
 
     /**
@@ -33,7 +33,7 @@ class Rivescript
      */
     public function __construct()
     {
-        $this->parser = new Parser;
+        $this->parser = new Parser();
     }
 
     /*
@@ -46,11 +46,11 @@ class Rivescript
     /**
      * Load a RiveScript document from a file.
      *
-     * @param  array|string  $files
+     * @param array|string $files
      */
     public function load($files)
     {
-        $files = (! is_array($files)) ? (array) $files : $files;
+        $files = (!is_array($files)) ? (array) $files : $files;
 
         foreach ($files as $file) {
             $this->tree = $this->parser->process($file, $this->tree);
@@ -69,7 +69,7 @@ class Rivescript
             foreach ($triggers as $key => $trigger) {
                 foreach ($this->triggers as $class) {
                     $triggerClass = "\\Vulcan\\Rivescript\\Triggers\\$class";
-                    $triggerClass = new $triggerClass;
+                    $triggerClass = new $triggerClass();
 
                     $found = $triggerClass->parse($key, $trigger['trigger'], $message);
 
@@ -77,7 +77,7 @@ class Rivescript
                         log_debug('Found match', [
                             'type'    => $class,
                             'message' => $message,
-                            'found'   => $found
+                            'found'   => $found,
                         ]);
 
                         break 2;
@@ -90,11 +90,12 @@ class Rivescript
 
                 if (isset($triggers[$found['key']]['redirect'])) {
                     $message = $this->parseReply($triggers[$found['key']]['redirect'], $found['data']);
+
                     return $this->reply($user, $message);
                 }
 
                 if (count($replies)) {
-                    $key   = array_rand($replies);
+                    $key = array_rand($replies);
                     $reply = $this->parseReply($replies[$key], $found['data']);
 
                     return $reply;
@@ -105,15 +106,15 @@ class Rivescript
         return 'No response found.';
     }
 
-    public function parseReply($message, $data = array())
+    public function parseReply($message, $data = [])
     {
         $message = [
             'response' => $message,
-            'metadata' => []
+            'metadata' => [],
         ];
 
         foreach ($this->tags as $class) {
-            $class    = "\\Vulcan\\Rivescript\\Tags\\$class";
+            $class = "\\Vulcan\\Rivescript\\Tags\\$class";
             /** @var \Vulcan\Rivescript\Contracts\Tag $tagClass */
             $tagClass = new $class($this->tree);
 

@@ -2,8 +2,8 @@
 
 namespace Vulcan\Rivescript\Support;
 
-use Monolog\Logger as Monolog;
 use Monolog\Handler\StreamHandler;
+use Monolog\Logger as Monolog;
 
 class Logger
 {
@@ -24,11 +24,12 @@ class Logger
     /**
      * Adds a log record at the DEBUG level.
      *
-     * @param  string  $message The log message
-     * @param  array  $context The log context
-     * @return Boolean  Whether the record has been processed
+     * @param string $message The log message
+     * @param array  $context The log context
+     *
+     * @return bool Whether the record has been processed
      */
-    public function debug($message, array $context = array())
+    public function debug($message, array $context = [])
     {
         return $this->logger->addDebug($message, $context);
     }
@@ -36,11 +37,12 @@ class Logger
     /**
      * Adds a log record at the WARNING level.
      *
-     * @param  string  $message The log message
-     * @param  array  $context The log context
-     * @return Boolean  Whether the record has been processed
+     * @param string $message The log message
+     * @param array  $context The log context
+     *
+     * @return bool Whether the record has been processed
      */
-    public function warning($message, array $context = array())
+    public function warning($message, array $context = [])
     {
         return $this->logger->addWarning($message, $context);
     }
