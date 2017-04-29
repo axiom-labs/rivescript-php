@@ -2,8 +2,6 @@
 
 namespace Tests;
 
-use Vulcan\Rivescript\Utility;
-
 class WildcardResponseTest extends ResponseTest
 {
     public function testWildcardReplyOneStar()

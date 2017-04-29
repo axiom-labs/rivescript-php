@@ -7,14 +7,14 @@ class Synapse
     /**
      * Object hash map.
      *
-     * @var Array
+     * @var array
      */
-    private $map = array();
+    private $map = [];
 
     /**
      * Static instance object.
      *
-     * @var Object
+     * @var object
      */
     public static $instance;
 
@@ -29,7 +29,7 @@ class Synapse
     /**
      * Get the Synapse instance object.
      *
-     * @return Object
+     * @return object
      */
     public static function getInstance()
     {
@@ -39,7 +39,7 @@ class Synapse
     /**
      * Magic __set method.
      *
-     * @return Void
+     * @return void
      */
     public function __set($key, $value)
     {
@@ -49,8 +49,9 @@ class Synapse
     /**
      * Magic __get method.
      *
-     * @param  String  $key
-     * @return Mixed
+     * @param string $key
+     *
+     * @return mixed
      */
     public function __get($key)
     {

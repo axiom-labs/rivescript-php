@@ -19,19 +19,22 @@ class Bot extends Tag
     /**
      * Parse the source.
      *
-     * @param  String  $source
-     * @return String
+     * @param string $source
+     *
+     * @return string
      */
     public function parse($source)
     {
-        if (! $this->sourceAllowed()) return $source;
+        if (!$this->sourceAllowed()) {
+            return $source;
+        }
 
         if ($this->hasMatches($source)) {
-            $matches   = $this->getMatches($source);
+            $matches = $this->getMatches($source);
             $variables = synapse()->memory->variables();
 
             foreach ($matches as $match) {
-                $source = str_replace($match[0], $variables[$match[1]], $source);;
+                $source = str_replace($match[0], $variables[$match[1]], $source);
             }
         }
 

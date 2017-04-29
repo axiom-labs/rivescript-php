@@ -12,17 +12,17 @@ class Rivescript
      */
     public function __construct()
     {
-        include('bootstrap.php');
+        include 'bootstrap.php';
     }
 
     /**
      * Load RiveScript documents from files.
      *
-     * @param  array|string  $files
+     * @param array|string $files
      */
     public function load($files)
     {
-        $files = (! is_array($files)) ? (array) $files : $files;
+        $files = (!is_array($files)) ? (array) $files : $files;
 
         foreach ($files as $file) {
             synapse()->brain->teach($file);
@@ -31,7 +31,7 @@ class Rivescript
 
     public function reply($message, $user = null)
     {
-        $input  = new Input($message, $user);
+        $input = new Input($message, $user);
         $output = new Output($input);
 
         return $output->process();

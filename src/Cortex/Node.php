@@ -5,40 +5,40 @@ namespace Vulcan\Rivescript\Cortex;
 class Node
 {
     /**
-     * @var String
+     * @var string
      */
     protected $source;
 
     /**
-     * @var Integer
+     * @var int
      */
     protected $number;
 
     /**
-     * @var String
+     * @var string
      */
     protected $command;
 
     /**
-     * @var String
+     * @var string
      */
     protected $value;
 
     /**
-     * @var Boolean
+     * @var bool
      */
     protected $isInterrupted = false;
 
     /**
-     * @var Boolean
+     * @var bool
      */
     protected $isComment = false;
 
     /**
      * Create a new Source instance.
      *
-     * @param  String  $source
-     * @param  Integer  $number
+     * @param string $source
+     * @param int    $number
      */
     public function __construct($source, int $number)
     {
@@ -53,7 +53,7 @@ class Node
     /**
      * Returns the node's command trigger.
      *
-     * @return String
+     * @return string
      */
     public function command()
     {
@@ -63,7 +63,7 @@ class Node
     /**
      * Returns the node's value.
      *
-     * @return Mixed
+     * @return mixed
      */
     public function value()
     {
@@ -73,7 +73,7 @@ class Node
     /**
      * Returns the node's line number.
      *
-     * @return Integer
+     * @return int
      */
     public function number()
     {
@@ -83,7 +83,7 @@ class Node
     /**
      * Returns true if node is a comment.
      *
-     * @return Boolean
+     * @return bool
      */
     public function isComment()
     {
@@ -93,7 +93,7 @@ class Node
     /**
      * Returns true is node has been interrupted.
      *
-     * @return Boolean
+     * @return bool
      */
     public function isInterrupted()
     {
@@ -109,6 +109,7 @@ class Node
     {
         if (mb_strlen($this->source) === 0) {
             $this->isInterrupted = true;
+
             return;
         }
 
@@ -128,7 +129,9 @@ class Node
             log_warning('Using the # symbol for comments is deprecated');
             $this->isInterrupted = true;
         } elseif (starts_with($this->source, '/*')) {
-            if (ends_with($this->source, '*/')) return null;
+            if (ends_with($this->source, '*/')) {
+                return;
+            }
             $this->isComment = true;
         } elseif (ends_with($this->source, '*/')) {
             $this->isComment = false;

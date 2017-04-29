@@ -2,8 +2,6 @@
 
 namespace Tests;
 
-use Vulcan\Rivescript\Utility;
-
 class TriggerTagsTest extends ResponseTest
 {
     public function testBotTag()

@@ -9,20 +9,21 @@ class Wildcard extends Trigger
     /**
      * Parse the trigger.
      *
-     * @param  string  $trigger
-     * @param  string  $message
+     * @param string $trigger
+     * @param string $message
+     *
      * @return array
      */
     public function parse($trigger, $input)
     {
         $trigger = $this->parseTags($trigger);
-        
+
         $wildcards = [
             '/\*$/'             => '.*?',
             '/\*/'              => '\\w+?',
             '/#/'               => '\\d+?',
             '/_/'               => '[a-z]?',
-            '/<zerowidthstar>/' => '.*?'
+            '/<zerowidthstar>/' => '.*?',
         ];
 
         foreach ($wildcards as $pattern => $replacement) {

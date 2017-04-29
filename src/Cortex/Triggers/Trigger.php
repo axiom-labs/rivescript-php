@@ -19,12 +19,13 @@ abstract class Trigger implements TriggerContract
     /**
      * Parse the response through the available tags.
      *
-     * @param  String  $response
-     * @return String
+     * @param string $response
+     *
+     * @return string
      */
     protected function parseTags($trigger)
     {
-        synapse()->tags->each(function($tag) use (&$trigger) {
+        synapse()->tags->each(function ($tag) use (&$trigger) {
             $class = "\\Vulcan\\Rivescript\\Cortex\\Tags\\$tag";
             $tagClass = new $class('trigger');
 

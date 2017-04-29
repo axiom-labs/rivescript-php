@@ -7,7 +7,8 @@ interface Tag
     /**
      * Parse the response.
      *
-     * @param  string  $source
+     * @param string $source
+     *
      * @return array
      */
     public function parse($source);

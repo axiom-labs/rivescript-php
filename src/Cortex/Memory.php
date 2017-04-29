@@ -7,13 +7,13 @@ use Vulcan\Collections\Collection;
 class Memory
 {
     /**
-    * @var Collection
-    */
+     * @var Collection
+     */
     protected $shortTerm;
 
     /**
-    * @var Collection
-    */
+     * @var Collection
+     */
     protected $substitute;
 
     /**
@@ -21,15 +21,14 @@ class Memory
      */
     protected $variables;
 
-
     /**
      * Create a new Memory instance.
      */
     public function __construct()
     {
-        $this->shortTerm  = Collection::make([]);
+        $this->shortTerm = Collection::make([]);
         $this->substitute = Collection::make([]);
-        $this->variables  = Collection::make([]);
+        $this->variables = Collection::make([]);
     }
 
     /**
@@ -53,10 +52,10 @@ class Memory
     }
 
     /**
-    * Stored variables.
-    *
-    * @return Collection
-    */
+     * Stored variables.
+     *
+     * @return Collection
+     */
     public function variables()
     {
         return $this->variables;

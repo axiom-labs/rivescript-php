@@ -2,8 +2,6 @@
 
 namespace Tests;
 
-use Vulcan\Rivescript\Utility;
-
 class AtomicResponseTest extends ResponseTest
 {
     public function testAtomicReply()

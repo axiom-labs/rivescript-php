@@ -9,8 +9,9 @@ class Variable implements Command
     /**
      * Parse the command.
      *
-     * @param  Node  $node
-     * @param  String  $command
+     * @param Node   $node
+     * @param string $command
+     *
      * @return array
      */
     public function parse($node, $command)
@@ -19,10 +20,10 @@ class Variable implements Command
             $type = strtok($node->value(), ' ');
 
             if ($type === 'var') {
-                $value             = str_replace('var', '', $node->value());
+                $value = str_replace('var', '', $node->value());
                 list($key, $value) = explode('=', $value);
 
-                $key   = trim($key);
+                $key = trim($key);
                 $value = trim($value);
 
                 synapse()->memory->variables()->put($key, $value);

@@ -2,12 +2,10 @@
 
 namespace Vulcan\Rivescript\Cortex;
 
-use Vulcan\Collections\Collection;
-
 class Output
 {
     /**
-     * @var Array
+     * @var array
      */
     protected $data;
 
@@ -17,14 +15,14 @@ class Output
     protected $input;
 
     /**
-     * @var String
+     * @var string
      */
     protected $output = 'Error: Response could not be determined.';
 
     /**
      * Create a new Output instance.
      *
-     * @param  Input  $input
+     * @param Input $input
      */
     public function __construct(Input $input)
     {
@@ -34,14 +32,16 @@ class Output
     /**
      * Process the corrent output response by the interpreter.
      *
-     * @return Mixed
+     * @return mixed
      */
     public function process()
     {
-        synapse()->brain->topic()->triggers()->each(function($data, $trigger) {
+        synapse()->brain->topic()->triggers()->each(function ($data, $trigger) {
             $this->searchTriggers($trigger);
 
-            if ($this->output !== 'Error: Response could not be determined.') return false;
+            if ($this->output !== 'Error: Response could not be determined.') {
+                return false;
+            }
         });
 
         return $this->output;
@@ -50,14 +50,15 @@ class Output
     /**
      * Search through available triggers to find a possible match.
      *
-     * @param  String  $trigger
-     * @return Boolean
+     * @param string $trigger
+     *
+     * @return bool
      */
     protected function searchTriggers($trigger)
     {
-        synapse()->triggers->each(function($class) use ($trigger) {
+        synapse()->triggers->each(function ($class) use ($trigger) {
             $triggerClass = "\\Vulcan\\Rivescript\\Cortex\\Triggers\\$class";
-            $triggerClass = new $triggerClass;
+            $triggerClass = new $triggerClass();
 
             $found = $triggerClass->parse($trigger, $this->input);
 
@@ -72,27 +73,29 @@ class Output
     /**
      * Fetch a response from the found trigger.
      *
-     * @param  String  $trigger;
+     * @param string $trigger;
+     *
      * @return void
      */
     protected function getResponse($trigger)
     {
-        $trigger      = synapse()->brain->topic()->triggers()->get($trigger);
-        $key          = array_rand($trigger['responses']);
+        $trigger = synapse()->brain->topic()->triggers()->get($trigger);
+        $key = array_rand($trigger['responses']);
         $this->output = $this->parseResponse($trigger['responses'][$key]);
     }
 
     /**
      * Parse the response through the available tags.
      *
-     * @param  String  $response
-     * @return String
+     * @param string $response
+     *
+     * @return string
      */
     protected function parseResponse($response)
     {
-        synapse()->tags->each(function($tag) use (&$response) {
+        synapse()->tags->each(function ($tag) use (&$response) {
             $class = "\\Vulcan\\Rivescript\\Cortex\\Tags\\$tag";
-            $tagClass = new $class;
+            $tagClass = new $class();
 
             $response = $tagClass->parse($response, $this->data);
         });

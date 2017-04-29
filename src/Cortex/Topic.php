@@ -7,30 +7,30 @@ use Vulcan\Collections\Collection;
 class Topic
 {
     /**
-     * @var String
+     * @var string
      */
     protected $name;
 
     /**
-     * @var Array
+     * @var array
      */
     public $triggers;
 
     /**
      * Create a new Branch instance.
      *
-     * @param  String  $name
+     * @param string $name
      */
     public function __construct($name)
     {
-        $this->name     = $name;
+        $this->name = $name;
         $this->triggers = new Collection([]);
     }
 
     /**
      * Return triggers associated with this branch.
      *
-     * @return Array
+     * @return array
      */
     public function triggers()
     {

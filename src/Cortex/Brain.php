@@ -3,7 +3,6 @@
 namespace Vulcan\Rivescript\Cortex;
 
 use SplFileObject;
-Use Vulcan\Collections\Collection;
 
 class Brain
 {
@@ -14,7 +13,6 @@ class Brain
 
     /**
      * Create a new instance of Brain.
-     *
      */
     public function __construct()
     {
@@ -24,28 +22,31 @@ class Brain
     /**
      * Teach the brain contents of a new file source.
      *
-     * @param  String  $file
+     * @param string $file
      */
     public function teach($file)
     {
-        $commands   = synapse()->commands;
-        $file       = new SplFileObject($file);
+        $commands = synapse()->commands;
+        $file = new SplFileObject($file);
         $lineNumber = 0;
 
-        while (! $file->eof()) {
+        while (!$file->eof()) {
             $currentCommand = null;
-            $node           = new Node($file->fgets(), $lineNumber++);
+            $node = new Node($file->fgets(), $lineNumber++);
 
-            if ($node->isInterrupted() or $node->isComment()) continue;
+            if ($node->isInterrupted() or $node->isComment()) {
+                continue;
+            }
 
-            $commands->each(function($command) use ($node, $currentCommand) {
-                $class        = "\\Vulcan\\Rivescript\\Cortex\\Commands\\$command";
-                $commandClass = new $class;
+            $commands->each(function ($command) use ($node, $currentCommand) {
+                $class = "\\Vulcan\\Rivescript\\Cortex\\Commands\\$command";
+                $commandClass = new $class();
 
                 $result = $commandClass->parse($node, $currentCommand);
 
                 if (isset($result['command'])) {
                     $currentCommand = $result['command'];
+
                     return false;
                 }
             });
