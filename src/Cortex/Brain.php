@@ -30,7 +30,7 @@ class Brain
         $file = new SplFileObject($file);
         $lineNumber = 0;
 
-        while (!$file->eof()) {
+        while (! $file->eof()) {
             $currentCommand = null;
             $node = new Node($file->fgets(), $lineNumber++);
 

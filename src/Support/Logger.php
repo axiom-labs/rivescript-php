@@ -2,8 +2,8 @@
 
 namespace Vulcan\Rivescript\Support;
 
-use Monolog\Handler\StreamHandler;
 use Monolog\Logger as Monolog;
+use Monolog\Handler\StreamHandler;
 
 class Logger
 {

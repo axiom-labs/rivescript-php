@@ -22,7 +22,7 @@ class Rivescript
      */
     public function load($files)
     {
-        $files = (!is_array($files)) ? (array) $files : $files;
+        $files = (! is_array($files)) ? (array) $files : $files;
 
         foreach ($files as $file) {
             synapse()->brain->teach($file);

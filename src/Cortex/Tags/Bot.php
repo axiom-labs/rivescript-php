@@ -25,7 +25,7 @@ class Bot extends Tag
      */
     public function parse($source)
     {
-        if (!$this->sourceAllowed()) {
+        if (! $this->sourceAllowed()) {
             return $source;
         }
 

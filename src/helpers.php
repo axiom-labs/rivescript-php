@@ -1,10 +1,10 @@
 <?php
 
+use Vulcan\Rivescript\Support\Str;
 use Vulcan\Rivescript\Cortex\Synapse;
 use Vulcan\Rivescript\Support\Logger;
-use Vulcan\Rivescript\Support\Str;
 
-if (!function_exists('synapse')) {
+if (! function_exists('synapse')) {
     /**
      * Get the available Synapse instance.
      *
@@ -16,7 +16,7 @@ if (!function_exists('synapse')) {
     }
 }
 
-if (!function_exists('dd')) {
+if (! function_exists('dd')) {
     /**
      * Dump the passed variable(s) and end the script.
      *
@@ -34,7 +34,7 @@ if (!function_exists('dd')) {
     }
 }
 
-if (!function_exists('ends_with')) {
+if (! function_exists('ends_with')) {
     /**
      * Determine if a given string ends with a given substring.
      *
@@ -49,7 +49,7 @@ if (!function_exists('ends_with')) {
     }
 }
 
-if (!function_exists('log_debug')) {
+if (! function_exists('log_debug')) {
     /**
      * Log the message and contextual array as a new debug entry.
      *
@@ -66,7 +66,7 @@ if (!function_exists('log_debug')) {
     }
 }
 
-if (!function_exists('log_warning')) {
+if (! function_exists('log_warning')) {
     /**
      * Log the message and contextual array as a new warning entry.
      *
@@ -83,7 +83,7 @@ if (!function_exists('log_warning')) {
     }
 }
 
-if (!function_exists('remove_whitespace')) {
+if (! function_exists('remove_whitespace')) {
     /**
      * Trim leading and trailing whitespace as well as
      * whitespace surrounding individual arguments.
@@ -98,7 +98,7 @@ if (!function_exists('remove_whitespace')) {
     }
 }
 
-if (!function_exists('starts_with')) {
+if (! function_exists('starts_with')) {
     /**
      * Determine if a given string starts with a given substring.
      *

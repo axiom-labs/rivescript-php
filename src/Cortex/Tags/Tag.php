@@ -21,7 +21,7 @@ abstract class Tag implements TagContract
     {
         $this->sourceType = $sourceType;
 
-        if (!isset($this->allowedSources)) {
+        if (! isset($this->allowedSources)) {
             throw new LogicException(get_class($this).' must have an "allowedSources" property declared.');
         }
     }
