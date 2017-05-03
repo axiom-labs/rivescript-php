@@ -85,7 +85,7 @@ class Output
             return $this->getResponse($trigger['redirect']);
         }
 
-        $key          = array_rand($trigger['responses']);
+        $key = array_rand($trigger['responses']);
         $this->output = $this->parseResponse($trigger['responses'][$key]);
     }
 
