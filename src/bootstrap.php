@@ -34,12 +34,12 @@ $synapse->commands = Vulcan\Collections\Collection::make([
 
 $synapse->triggers = Vulcan\Collections\Collection::make([
     'Atomic',
-    'Wildcard'
+    'Wildcard',
 ]);
 
 $synapse->tags = Vulcan\Collections\Collection::make([
     'Bot',
-    'Star','Topic'
+    'Star', 'Topic',
 ]);
 
 /*
@@ -53,7 +53,7 @@ $synapse->tags = Vulcan\Collections\Collection::make([
 */
 
 $synapse->memory = new Vulcan\Rivescript\Cortex\Memory();
-$synapse->brain  = new Vulcan\Rivescript\Cortex\Brain();
+$synapse->brain = new Vulcan\Rivescript\Cortex\Brain();
 
 /*
 |--------------------------------------------------------------------------
