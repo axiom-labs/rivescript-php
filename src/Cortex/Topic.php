@@ -23,7 +23,7 @@ class Topic
      */
     public function __construct($name)
     {
-        $this->name = $name;
+        $this->name     = $name;
         $this->triggers = new Collection([]);
     }
 

@@ -20,7 +20,7 @@ class Trigger implements Command
         if ($node->command() === '+') {
             $topic = synapse()->memory->shortTerm()->get('topic') ?: 'random';
             $topic = synapse()->brain->topic($topic);
-            $type = $this->determineTriggerType($node->value());
+            $type  = $this->determineTriggerType($node->value());
 
             $data = [
                 'type'      => $type,

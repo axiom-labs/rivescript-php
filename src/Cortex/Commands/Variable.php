@@ -20,10 +20,10 @@ class Variable implements Command
             $type = strtok($node->value(), ' ');
 
             if ($type === 'var') {
-                $value = str_replace('var', '', $node->value());
+                $value             = str_replace('var', '', $node->value());
                 list($key, $value) = explode('=', $value);
 
-                $key = trim($key);
+                $key   = trim($key);
                 $value = trim($value);
 
                 synapse()->memory->variables()->put($key, $value);

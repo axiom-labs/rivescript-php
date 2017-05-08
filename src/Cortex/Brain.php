@@ -26,13 +26,13 @@ class Brain
      */
     public function teach($file)
     {
-        $commands = synapse()->commands;
-        $file = new SplFileObject($file);
+        $commands   = synapse()->commands;
+        $file       = new SplFileObject($file);
         $lineNumber = 0;
 
         while (! $file->eof()) {
             $currentCommand = null;
-            $node = new Node($file->fgets(), $lineNumber++);
+            $node           = new Node($file->fgets(), $lineNumber++);
 
             if ($node->isInterrupted() or $node->isComment()) {
                 continue;

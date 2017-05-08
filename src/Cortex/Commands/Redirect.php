@@ -17,8 +17,8 @@ class Redirect implements Command
     public function parse($node, $command)
     {
         if ($node->command() === '@') {
-            $topic = synapse()->memory->shortTerm()->get('topic') ?: 'random';
-            $key = synapse()->memory->shortTerm()->get('trigger');
+            $topic   = synapse()->memory->shortTerm()->get('topic') ?: 'random';
+            $key     = synapse()->memory->shortTerm()->get('trigger');
             $trigger = synapse()->brain->topic($topic)->triggers()->get($key);
 
             $trigger['redirect'] = $node->value();

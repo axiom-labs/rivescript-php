@@ -28,7 +28,7 @@ class Input
     public function __construct($source, $user = null)
     {
         $this->original = $source;
-        $this->user = $user;
+        $this->user     = $user;
 
         $this->cleanOriginalSource();
     }
@@ -61,7 +61,7 @@ class Input
      */
     protected function cleanOriginalSource()
     {
-        $patterns = synapse()->memory->substitute()->keys()->all();
+        $patterns     = synapse()->memory->substitute()->keys()->all();
         $replacements = synapse()->memory->substitute()->values()->all();
 
         $this->source = mb_strtolower($this->original);

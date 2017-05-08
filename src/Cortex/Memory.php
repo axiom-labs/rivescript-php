@@ -26,9 +26,9 @@ class Memory
      */
     public function __construct()
     {
-        $this->shortTerm = Collection::make([]);
+        $this->shortTerm  = Collection::make([]);
         $this->substitute = Collection::make([]);
-        $this->variables = Collection::make([]);
+        $this->variables  = Collection::make([]);
     }
 
     /**

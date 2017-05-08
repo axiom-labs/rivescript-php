@@ -31,7 +31,7 @@ class Rivescript
 
     public function reply($message, $user = null)
     {
-        $input = new Input($message, $user);
+        $input  = new Input($message, $user);
         $output = new Output($input);
 
         return $output->process();

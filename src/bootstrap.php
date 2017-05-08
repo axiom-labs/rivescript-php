@@ -53,7 +53,7 @@ $synapse->tags = Vulcan\Collections\Collection::make([
 */
 
 $synapse->memory = new Vulcan\Rivescript\Cortex\Memory();
-$synapse->brain = new Vulcan\Rivescript\Cortex\Brain();
+$synapse->brain  = new Vulcan\Rivescript\Cortex\Brain();
 
 /*
 |--------------------------------------------------------------------------
