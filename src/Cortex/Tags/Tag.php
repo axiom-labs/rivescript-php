@@ -3,7 +3,6 @@
 namespace Vulcan\Rivescript\Cortex\Tags;
 
 use LogicException;
-use Vulcan\Rivescript\Cortex\Input;
 use Vulcan\Rivescript\Contracts\Tag as TagContract;
 
 abstract class Tag implements TagContract
