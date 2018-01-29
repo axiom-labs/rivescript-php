@@ -10,7 +10,7 @@ class Memory
      * @var Collection
      */
     protected $person;
-    
+
     /**
      * @var Collection
      */
@@ -42,7 +42,7 @@ class Memory
         $this->person     = Collection::make([]);
         $this->user       = Collection::make([]);
     }
-    
+
     /**
      * Stored person variables.
      *
