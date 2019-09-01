@@ -39,6 +39,7 @@ class Memory
         $this->shortTerm  = Collection::make([]);
         $this->substitute = Collection::make([]);
         $this->variables  = Collection::make([]);
+        $this->arrays     = Collection::make([]);
         $this->person     = Collection::make([]);
         $this->user       = Collection::make([]);
     }
@@ -81,6 +82,16 @@ class Memory
     public function variables()
     {
         return $this->variables;
+    }
+
+    /**
+     * Stored arrays.
+     *
+     * @return Collection
+     */
+    public function arrays()
+    {
+        return $this->arrays;
     }
 
     /**

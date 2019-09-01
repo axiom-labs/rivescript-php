@@ -31,11 +31,13 @@ $synapse->commands = Axiom\Collections\Collection::make([
     'Variable',
     'VariablePerson',
     'VariableSubstitute',
+    'VariableArray',
 ]);
 
 $synapse->triggers = Axiom\Collections\Collection::make([
     'Atomic',
     'Wildcard',
+    'Arrays'
 ]);
 
 $synapse->tags = Axiom\Collections\Collection::make([
